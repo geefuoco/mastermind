@@ -10,10 +10,11 @@ class Game
   end
 
 
-  def start_game
+  def start_game_guesser
     rounds = 12
+    self.code_object.generate_combination
     code_master_code = self.code_object.combination
-    self.message_object.display_welcome_message
+    self.message_obect.display_guesser_game_start
     while rounds > 0 do
       self.message_object.display_input_message(rounds)
       player_guess = gets.chomp
@@ -28,6 +29,22 @@ class Game
       rounds -= 1
     end
     self.message_obect.display_lose_message(code_master_code)
+  end
+
+  def start_game_code_master
+    self.message_object.display_code_master_game_start
+    player_combination = gets.chomp
+    self.message_object.get_input(player_combination)
+    rounds = 12
+    while rounds > 0 do
+      cpu_guess = self.code_object.generate_combination
+      p cpu_guess
+      if winner?(player_combination, cpu_guess)then
+        return self.message_object.display_lose_message_code_master
+      end
+      rounds -= 1
+    end
+    self.message_object.display_winner_message
   end
 
 

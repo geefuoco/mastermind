@@ -22,7 +22,16 @@ class Message
     puts "\e[32m-----------------------\e[0m"
     puts "Welcome to MasterMind!"
     puts "\e[32m-----------------------\e[0m"
+    puts "Please enter 1 to be guesser, or 2 to be code master"
+  end
+
+  def display_guesser_game_start
     puts "Guess your opponents code in \e[31m12 tries\e[0m of less to win!"
+  end
+
+  def display_code_master_game_start
+    puts "Please enter a combination of 4 colors. You can repeat colors"
+    puts "Colors: [\e[30mblack\e[0m, \e[37mwhite\e[0m, \e[32mgreen\e[0m, \e[31mred\e[0m, \e[34mblue\e[0m, \e[33myellow\e[0m]"
   end
 
   def display_input_message(rounds_left)
@@ -47,6 +56,11 @@ class Message
   def display_lose_message(combination)
     puts "\e[33m~~~~~~~~~~~GAMEOVER~~~~~~~~~~~~~~\e[0m"
     puts "You lose ! The combination was #{combination}"
+  end
+
+  def display_lose_message_code_master
+    puts "\e[33m~~~~~~~~~~~GAMEOVER~~~~~~~~~~~~~~\e[0m"
+    puts "You lose !"
   end
 
 end

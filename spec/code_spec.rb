@@ -12,15 +12,15 @@ describe Code do
 
   context "#generate_combination" do
     it "returns a randomized combination of colors when called" do
-      combo = Code.generate_combination
+      combo = Code.new().generate_combination
       expect(combo.combination.length).to eq(4)
     end
   end
 
   context "#generate_combination" do
     it "returns a randomized combination of colors when called" do
-      combo = Code.generate_combination
-      combo2 = Code.generate_combination
+      combo = Code.new().generate_combination
+      combo2 = Code.new().generate_combination
       expect(combo.combination == combo2.combination).to eq(false)
     end
   end
