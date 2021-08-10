@@ -1,5 +1,4 @@
 
-
 class Game
 
   attr_reader :message_object, :code_matcher_object, :code_object
@@ -16,19 +15,19 @@ class Game
     code_master_code = self.code_object.combination
     self.message_object.display_welcome_message
     while rounds > 0 do
-      self.message_object.display_input_message
+      self.message_object.display_input_message(rounds)
       player_guess = gets.chomp
-      self.message.get_input(player_guess)
-      color_matches = self.code_matcher_object.color_match(self.message.input, code_master_code)
-      color_and_position = self.code_matcher_object.color_and_position(self.message.input, code_master_code)
-      self.message.display_color_matches(color_matches)
-      self.display_exact_matchs(color_and_position)
-      if winner?(self.message.input, code_master_code) then
-        puts "Congrats ! You win !"
+      self.message_object.get_input(player_guess)
+      color_matches = self.code_matcher_object.color_match(self.message_object.input, code_master_code)
+      color_and_position = self.code_matcher_object.color_and_position(self.message_object.input, code_master_code)
+      self.message_object.display_color_matches(color_matches)
+      self.message_object.display_exact_matches(color_and_position)
+      if winner?(self.message_object.input, code_master_code) then
+        return self.message_object.display_winner_message
       end
-      round -= 1
+      rounds -= 1
     end
-    puts "You Lose ! The combination was #{code_master_code}"
+    self.message_obect.display_lose_message(code_master_code)
   end
 
 
