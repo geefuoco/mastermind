@@ -3,18 +3,6 @@ require 'code_matcher'
 
 describe CodeMatcher do
 
-  context "#self.match?" do
-    it "should return true when the codes match" do
-      expect(CodeMatcher.match?(["hello"], ["hello"])).to eq(true)
-    end
-  end
-
-  context "#self.match?" do
-    it "should return false when the codes do not match" do
-      expect(CodeMatcher.match?(["help"], ["hello"])).to eq(false)
-    end
-  end
-
   context "#self.color_match" do
     it "should only return 1 if all colors are the same" do
       combo = Code.new("black", "black", "black", "black")
